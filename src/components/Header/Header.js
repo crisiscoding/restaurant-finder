@@ -1,5 +1,6 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core";
+import { Autocomplete } from "@react-google-maps/api";
 import SearchIcon from "@material-ui/icons/Search";
 import useStyles from "./styles";
 
@@ -12,13 +13,20 @@ const Header = () => {
           My Resturant Finder
         </Typography>
         <Box display="flex">
-          <Typography variant="h8" className={classes.title}>
-            Explore
-          </Typography>
-          <div className={classes.searchIcon}>
-            <SearchIcon />
+          {/* <Typography variant="h6" className={classes.title}>
+            Explore new restaurants
+          </Typography> */}
+          {/* <Autocomplete> NEED TO FIX THIS*/}
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search..."
+              classes={{ root: classes.inputRoot, input: classes.inputInput }}
+            />
           </div>
-          <InputBase placeholder="Search..."></InputBase>
+          {/* </Autocomplete> */}
         </Box>
       </Toolbar>
     </AppBar>
