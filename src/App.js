@@ -8,15 +8,12 @@ import { getRestaurantData } from "./api";
 function App() {
   const [restaurants, setRestaurants] = useState([]);
   const [coordinates, setCoordinates] = useState({});
-
-  // To make bounds dynamic i.e bl_lat, bl_long, tr_lat, tr_long
   const [bounds, setBounds] = useState(null);
 
-  /* GEO LOCATION
-- Need to get our GEO Location coords at the start i.e page load
-- Use browser in built geo location api
-- Google dev tools allows us to override location (under sensors)
-*/
+  // Need to get our GEO Location coords at the start i.e page load
+  // Use browser in built geo location api
+  // Can mess with location override in dev tools
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       // destructure to get the coordinates
@@ -29,10 +26,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // console.log(coordinates, bounds);
+    // console.log("IM THE BOUNDS", bounds);
+    // console.log("IM THE COORDS", coordinates);
     getRestaurantData().then((data) => {
-      // getRestaurantData is async so need to use .then syntax
-      // console.log(data);
+      //console.log("IM THE DATA", data);
       setRestaurants(data);
     });
   }, [coordinates, bounds]); // Need to grab the coordinates and bounds every time the map changes
@@ -43,7 +40,7 @@ function App() {
       {/* Header will take full width */}
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
-          <List />
+          <List restaurants={restaurants} />
         </Grid>
         {/* Map is larger than list so needs to take less space on mobile i.e 8/12 spaces  */}
         <Grid item xs={12} md={8}>
