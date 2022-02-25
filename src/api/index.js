@@ -13,14 +13,14 @@ const options = {
   },
   headers: {
     "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
-    "x-rapidapi-key": "a0673673d9msh0ffa9f1d70c65bfp1b2e2cjsn09126c1baca0",
+    "x-rapidapi-key": process.env.REACT_APP_RAPIDAPI_TRAVEL_API_KEY,
   },
 };
 
 export const getRestaurantData = async () => {
   try {
     const {
-      data: { data }, // destruct twice to get to restaurant data
+      data: { data },
     } = await axios.get(URL, options);
     return data;
   } catch (error) {
