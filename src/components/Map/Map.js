@@ -8,7 +8,7 @@ const Map = ({ setCoordinates, setBounds, coordinates }) => {
   return (
     <div className={classes.mapContainer}>
       <GoggleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyAzG7oTs6mqr8EuG68kzsqSVIvV67bygSM" }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
         defaultCenter={coordinates} // default center map & pass co-ordinates
         center={coordinates}
         defaultZoom={14}
