@@ -8,9 +8,9 @@ import { getRestaurantData } from "./api";
 function App() {
   const [restaurants, setRestaurants] = useState([]);
   const [coordinates, setCoordinates] = useState({});
-  const [bounds, setBounds] = useState(null);
+  const [bounds, setBounds] = useState({});
 
-  // Need to get our GEO Location coords at the start i.e page load
+  // Need to get our GEO Location coords at the start
   // Use browser in built geo location api
   // Can mess with location override in dev tools
 
@@ -28,11 +28,13 @@ function App() {
   useEffect(() => {
     // console.log("IM THE BOUNDS", bounds);
     // console.log("IM THE COORDS", coordinates);
-    getRestaurantData().then((data) => {
-      //console.log("IM THE DATA", data);
+    // make coordinates dynamic
+    getRestaurantData(bounds.sw, bounds.ne).then((data) => {
+      //console.log("IM THE DATA FROM TA API", data);
       setRestaurants(data);
     });
-  }, [coordinates, bounds]); // Need to grab the coordinates and bounds every time the map changes
+  }, [coordinates, bounds]);
+  // Need to grab the coordinates and bounds of every time the map changes
 
   return (
     <div className="App">
