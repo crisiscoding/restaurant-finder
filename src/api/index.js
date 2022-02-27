@@ -4,12 +4,13 @@ const URL =
   "https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary";
 
 export const getRestaurantData = async (sw, ne) => {
+  // pass in props from app.js
   try {
     const {
-      data: { data },
+      data: { data }, // destructure data twice
     } = await axios.get(URL, {
       params: {
-        // HARD CODE COORDS
+        // REMOVE HARD CODE COORDINATES
         // bl_latitude: "51.507351",
         // tr_latitude: "51.6918741",
         // bl_longitude: "-0.127758",
