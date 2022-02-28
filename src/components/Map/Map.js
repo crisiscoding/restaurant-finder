@@ -1,8 +1,9 @@
 import React from "react";
 import GoggleMapReact from "google-map-react";
 import useStyles from "./styles";
+import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 
-const Map = ({ setCoordinates, setBounds, coordinates }) => {
+const Map = ({ setCoordinates, setBounds, coordinates, restaurants }) => {
   const classes = useStyles();
 
   return (
@@ -19,7 +20,18 @@ const Map = ({ setCoordinates, setBounds, coordinates }) => {
           setCoordinates({ lat: e.center.latitude, lng: e.center.longitude });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-      ></GoggleMapReact>
+      >
+        {restaurants?.map((restaurant, index) => (
+          <div
+            className={classes.markerContainer}
+            lat={Number(restaurant.latitude)}
+            lng={Number(restaurant.longitude)}
+            key={index}
+          >
+            {<LocationOnOutlinedIcon color="primary" fontSize="large" />}
+          </div>
+        ))}
+      </GoggleMapReact>
     </div>
   );
 };
