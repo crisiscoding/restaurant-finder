@@ -15,17 +15,17 @@ import useStyles from "./styles.js";
 const List = ({ restaurants }) => {
   const classes = useStyles();
   const [rating, setRating] = useState("");
-  const [cusine, setCusine] = useState("");
+  const [cuisine, setCuisine] = useState("");
 
   return (
     <div className={classes.container}>
-      <Typography variant="h4">Restaurants around you</Typography>
+      <Typography variant="h4">Restaurants around me</Typography>
       <FormControl className={classes.formControl}>
-        <InputLabel>Cusine</InputLabel>
+        <InputLabel>Cuisine</InputLabel>
         <Select
-          value={cusine}
+          value={cuisine}
           onChange={(e) => {
-            setCusine(e.target.value);
+            setCuisine(e.target.value);
           }}
         >
           <MenuItem value={"All"}>All</MenuItem>
