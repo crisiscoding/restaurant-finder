@@ -7,6 +7,7 @@ import {
   CardMedia,
   CardContent,
   CardActions,
+  Chip,
 } from "@material-ui/core";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import PhoneIcon from "@material-ui/icons/Phone";
@@ -35,12 +36,16 @@ const Details = ({ restaurant }) => {
           {restaurant.name}
         </Typography>
         <Box display="flex" justifyContent="space-between" my={2}>
+          {/* Add ratings from MAT-UI */}
           <Rating name="read-only" value={Number(restaurant.rating)} readOnly />
           <Typography component="legend">
             {/* display review/s - if greater than 1 */}
             {restaurant.num_reviews} review{restaurant.num_reviews > 1 && "s"}
           </Typography>
         </Box>
+        {restaurant?.cuisine?.map(({ name }) => (
+          <Chip key={name} size="small" label={name} className={classes.chip} />
+        ))}
         {restaurant.address && (
           <Typography
             gutterBottom

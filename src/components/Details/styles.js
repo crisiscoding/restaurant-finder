@@ -12,4 +12,7 @@ export default makeStyles(() => ({
     alignItems: "center",
     justifyContent: "space-between",
   },
+  chip: {
+    margin: "5px 5px 5px 0",
+  },
 }));
