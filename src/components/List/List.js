@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  CircularProgress,
   Grid,
   Typography,
   InputLabel,
@@ -13,6 +12,7 @@ import Details from "../Details/Details.js";
 import useStyles from "./styles.js";
 
 const List = ({ restaurants }) => {
+  // rating, setRating
   const classes = useStyles();
   const [rating, setRating] = useState("");
   const [cuisine, setCuisine] = useState("");
