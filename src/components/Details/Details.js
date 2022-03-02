@@ -35,8 +35,7 @@ const Details = ({ restaurant }) => {
         <Typography gutterBottom variant="h5">
           {restaurant.name}
         </Typography>
-        <Box display="flex" justifyContent="space-between" my={2}>
-          {/* Add ratings from MAT-UI */}
+        <Box display="flex" justifyContent="space-between">
           <Rating name="read-only" value={Number(restaurant.rating)} readOnly />
           <Typography component="legend">
             {/* display review/s - if greater than 1 */}
