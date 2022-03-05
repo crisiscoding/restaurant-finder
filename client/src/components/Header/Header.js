@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core";
+import { Route, Routes, Link } from "react-router-dom";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  InputBase,
+  Box,
+  Button,
+} from "@material-ui/core";
 import { Autocomplete } from "@react-google-maps/api";
 import SearchIcon from "@material-ui/icons/Search";
 import useStyles from "./styles";
@@ -25,6 +33,14 @@ const Header = ({ setCoordinates }) => {
         <Typography variant="h5" className={classes.title}>
           My Resturant Finder
         </Typography>
+        <Link to={`/favourites`}>
+          <Button
+            variant="contained"
+            color="secondary" /* href="/Favourites" */
+          >
+            Favourites
+          </Button>
+        </Link>
         <Box display="flex">
           {/* what happens when we load the auto complete component - onLoad handler  */}
           {/* what happens when we change the place - onChange handler */}

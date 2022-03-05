@@ -17,6 +17,9 @@ import useStyles from "./styles";
 const Details = ({ restaurant }) => {
   //console.log("I AM THE RESTAURANTS", restaurant);
   const classes = useStyles();
+
+  //addtofavs function
+
   return (
     // Add a shadow effect
     <Card elevation={6}>
