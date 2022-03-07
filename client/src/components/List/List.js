@@ -15,13 +15,15 @@ const List = ({ restaurants }) => {
   const classes = useStyles();
   const [rating, setRating] = useState("");
   const [cuisine, setCuisine] = useState("");
-  // const [type, setType] = useState('restaurants')
-  // const [filterRating, setFilterRating ] = useState('rating')
+  const [type, setType] = useState("restaurants");
+  const [filterRating, setFilterRating] = useState("rating");
 
   return (
     <div className={classes.container}>
-      <Typography variant="h4">Restaurants around me</Typography>
-      <FormControl className={classes.formControl}>
+      <Typography variant="h4" gutterBottom>
+        Restaurants around me
+      </Typography>
+      {/* <FormControl className={classes.formControl}>
         <InputLabel id={cuisine}>Cuisine</InputLabel>
         <Select
           id="cuisine"
@@ -35,8 +37,8 @@ const List = ({ restaurants }) => {
           <MenuItem value={"Vegan Options"}>Vegan Options</MenuItem>
           <MenuItem value={"Gluten Free Options"}>Gluten Free Options</MenuItem>
         </Select>
-      </FormControl>
-      <FormControl className={classes.formControl}>
+      </FormControl> */}
+      {/* <FormControl className={classes.formControl}>
         <InputLabel>Rating</InputLabel>
         <Select
           value={rating}
@@ -49,7 +51,7 @@ const List = ({ restaurants }) => {
           <MenuItem value={4.0}>Above 4.0</MenuItem>
           <MenuItem value={4.5}>Above 4.5</MenuItem>
         </Select>
-      </FormControl>
+      </FormControl> */}
       <Grid container spacing={3} className={classes.list}>
         {restaurants?.map((restaurant, i) => (
           <Grid item key={i} xs={12}>

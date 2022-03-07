@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
-import { Grid } from "@material-ui/core";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
-import List from "./components/List/List";
-import Map from "./components/Map/Map";
+import Homepage from "./Homepage";
+import FavList from "./components/FavList/FavList";
 import { getRestaurantData } from "./api";
 
 function App() {
   const [restaurants, setRestaurants] = useState([]);
-  const [coordinates, setCoordinates] = useState({
-    /* lat: 40.41,
-    lng: 3.7, */
-  });
+  const [coordinates, setCoordinates] = useState({});
   const [bounds, setBounds] = useState({});
-  const [cuisine, setCuisine] = useState([]); // Vegetarian Friendly
-
+  const [cuisine, setCuisine] = useState([]);
   const [rating, setRating] = useState("");
 
   useEffect(() => {
@@ -32,28 +27,32 @@ function App() {
   }, [coordinates, bounds]);
 
   return (
-    <div className="App">
-      <Header />
-      {/* Header will take full width */}
-      <Grid container spacing={3} style={{ width: "100%" }}>
-        <Grid item xs={12} md={4}>
-          <List
-            restaurants={restaurants}
-            cuisine={cuisine}
-            setCuisine={setCuisine}
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route
+            path="/favourites"
+            element={
+              <FavList /* addItem={(newItem) => handleAddItem(newItem)} */ />
+            }
           />
-        </Grid>
-        {/* Map is larger than list so needs to take less space on mobile i.e 8/12 spaces  */}
-        <Grid item xs={12} md={8}>
-          <Map
-            setCoordinates={setCoordinates}
-            setBounds={setBounds}
-            coordinates={coordinates}
-            restaurants={restaurants}
+          <Route
+            path="/"
+            element={
+              <Homepage
+                restaurants={restaurants}
+                cuisine={cuisine}
+                setCuisine={setCuisine}
+                setCoordinates={setCoordinates}
+                setBounds={setBounds}
+                coordinates={coordinates}
+              />
+            }
           />
-        </Grid>
-      </Grid>
-    </div>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

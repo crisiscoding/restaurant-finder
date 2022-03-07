@@ -30,20 +30,19 @@ const Header = ({ setCoordinates }) => {
   return (
     <AppBar position="static">
       <Toolbar className={classes.toolbar}>
-        <Typography variant="h5" className={classes.title}>
-          My Resturant Finder
-        </Typography>
+        <Link to={`/`} underline="none">
+          <Button variant="text" className={classes.title}>
+            My Restaurant Finder
+          </Button>
+        </Link>
         <Link to={`/favourites`}>
-          <Button
-            variant="contained"
-            color="secondary" /* href="/Favourites" */
-          >
+          <Button variant="contained" color="secondary">
             Favourites
           </Button>
         </Link>
-        <Box display="flex">
-          {/* what happens when we load the auto complete component - onLoad handler  */}
-          {/* what happens when we change the place - onChange handler */}
+        {/* <Box display="flex">
+           what happens when we load the auto complete component - onLoad handler
+           what happens when we change the place - onChange handler 
           <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -55,8 +54,8 @@ const Header = ({ setCoordinates }) => {
               />
             </div>
           </Autocomplete>
-          {/* Need to connect GM API */}
-        </Box>
+          
+        </Box> */}
       </Toolbar>
     </AppBar>
   );
